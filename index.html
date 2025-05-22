@@ -1,188 +1,281 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TechZone - Gaming & Tech</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f2f5;
-      color: #222;
-    }
-    header {
-      background: #ff6600;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-    nav a {
-      color: white;
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      background: linear-gradient(90deg, #00bcd4, #009688);
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    .section {
-      padding: 2rem;
-    }
-    .articles, .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      padding: 1rem;
-    }
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .card a.button {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background: #ff6600;
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-    footer {
-      background: #009688;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-  </style>
-  <script>
-    let alreadyRedirected = false;
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.addEventListener("click", () => {
-        if (!alreadyRedirected) {
-          alreadyRedirected = true;
-          window.open("https://www.bestchange.com/?p=385221", "_blank");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechZone - Accueil</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00c3ff;
+            --secondary: #ffff1c;
+            --bg: #1a1a2e;
+            --header: #16213e;
+            --accent: #ff6f3c;
+            --white: #fff;
+            --gradient: linear-gradient(90deg, #00c3ff 0%, #ffff1c 100%);
         }
-      }, { once: true });
-    });
-  </script>
+        * {
+            box-sizing: border-box;
+            margin: 0; padding: 0;
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            min-height: 100vh;
+        }
+        header {
+            background: var(--gradient);
+            color: var(--header);
+            padding: 2rem 0 1rem 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            text-align: center;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--header);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+        nav a {
+            color: var(--header);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+        main {
+            max-width: 950px;
+            margin: 2rem auto 0 auto;
+            padding: 1.5rem;
+            background: #212143ee;
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        section {
+            margin-bottom: 2.5rem;
+        }
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-left: 6px solid var(--accent);
+            padding-left: 0.7rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 4px;
+        }
+        #about {
+            font-size: 1.15rem;
+        }
+        #news .news-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+        .news-card {
+            background: #23234d;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.13);
+            padding: 1.2rem;
+            transition: transform 0.18s;
+        }
+        .news-card:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+        }
+        .news-card h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .news-card p {
+            color: #d1d1d1;
+            font-size: 1rem;
+        }
+        #ads {
+            margin: 2.5rem 0 2rem 0;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--accent);
+            border-radius: 18px;
+            background: rgba(255,255,255,0.02);
+        }
+        #ads .parrainage-link, #ads .exchange-link {
+            margin-top: 10px;
+            font-size: 1.15rem;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        #ads .parrainage-link a, #ads .exchange-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        #ads .parrainage-link a:hover, #ads .exchange-link a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+        }
+        #contact input, #contact textarea {
+            padding: 0.7rem;
+            border-radius: 8px;
+            border: none;
+            background: #2f2f54;
+            color: var(--white);
+        }
+        #contact textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        #contact button {
+            background: var(--gradient);
+            color: var(--header);
+            border: none;
+            padding: 0.7rem 0;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+        #contact button:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem 0 1rem 0;
+            color: #b1b1b1;
+            background: #181826;
+            margin-top: 3rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 600px) {
+            main { padding: 0.8rem; }
+            header h1 { font-size: 2rem; }
+            nav { gap: 1rem; }
+            section h2 { font-size: 1.2rem; }
+            #ads { min-width: 320px; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>TechZone</h1>
-    <nav>
-      <a href="#articles">Articles</a>
-      <a href="#produits">Produits</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h2>Bienvenue sur mon site de gaming et tech !</h2>
-    <p>Découvrez les dernières actualités et recommandations sur les jeux vidéo et la technologie.</p>
-  </section>
-
-  <section id="articles" class="section">
-    <h2>Derniers Articles</h2>
-    <div class="articles">
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=Gaming+2024" alt="Jeux 2024">
-        <h3>Les meilleurs jeux de 2024</h3>
-        <p>Un aperçu des titres les plus attendus de l'année</p>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=PC+Gaming" alt="Laptop Gaming">
-        <h3>Guide d'achat : laptops pour le gaming</h3>
-        <p>Comment choisir le bon ordinateur portable pour jouer</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="produits" class="section">
-    <h2>Produits Recommandés</h2>
-    <div class="products">
-      <div class="card">
-        <h3>PC Portable Lenovo Legion 5 Pro</h3>
-        <a class="button" href="https://s.click.aliexpress.com/deep_link.htm?aff_short_key=YourAffiliateCode" target="_blank">Acheter sur AliExpress</a>
-      </div>
-      <div class="card">
-        <h3>Accessoires de gaming</h3>
-        <a class="button" href="https://s.click.aliexpress.com/deep_link.htm?aff_short_key=YourAffiliateCode" target="_blank">Voir les offres</a>
-      </div>
-      <div class="card">
-        <h3>Convertisseur crypto / fiat</h3>
-        <a class="button" target="_blank" href="https://www.bestchange.com/" onclick="this.href='https://www.bestchange.com/?p=385221'">www.bestchange.com</a>
-      </div>
-    </div>
-  </section>
-
-  
-<section id="actus" class="section" style="background:#fff8e1">
-  <h2>Actualités Gaming – Mai 2025</h2>
-  <div class="articles">
-    <div class="card">
-      <h3>Doom: The Dark Ages</h3>
-      <p>Une préquelle médiévale épique lancée le 15 mai 2025. Le Doom Slayer affronte des hordes démoniaques dans un univers inédit.</p>
-    </div>
-    <div class="card">
-      <h3>Elden Ring: Nightreign</h3>
-      <p>Prévu pour le 30 mai, ce roguelike coopératif révolutionne l'univers Elden Ring avec des cycles de boss de 3 jours.</p>
-    </div>
-    <div class="card">
-      <h3>The Midnight Walk</h3>
-      <p>Un jeu PS5 artistique entièrement en pâte à modeler, sorti le 8 mai 2025.</p>
-    </div>
-    <div class="card">
-      <h3>Yasha: Legends of the Demon Blade</h3>
-      <p>Un roguelite rapide et exigeant inspiré de Hades, avec une ambiance JRPG, sorti le 15 mai 2025.</p>
-    </div>
-    <div class="card">
-      <h3>The Precinct</h3>
-      <p>Un jeu d'action en monde ouvert dans une ville gangrenée par le crime, disponible depuis le 13 mai.</p>
-    </div>
-  </div>
-
-  <h2 style="margin-top:3rem">Actualités Tech – Mai 2025</h2>
-  <div class="articles">
-    <div class="card">
-      <h3>AMD au Computex 2025</h3>
-      <p>Présentation des innovations IA dans le jeu vidéo et les PC pro prévue le 21 mai.</p>
-    </div>
-    <div class="card">
-      <h3>ASUS et ROG au Computex</h3>
-      <p>Présentation du 20 au 23 mai des nouveaux produits gaming et hardware.</p>
-    </div>
-    <div class="card">
-      <h3>Microsoft Muse</h3>
-      <p>Une IA générative qui crée des actions de jeu automatiquement, présentée début 2025.</p>
-    </div>
-  </div>
-</section>
-
-
-<section id="contact" class="section" style="background:#e0f7fa">
-    <h2>Contact</h2>
-    <p>Vous avez des questions ? N'hésitez pas à me contacter via les réseaux sociaux ou par e-mail.</p>
-  </section>
-
-  <footer>
-    &copy; 2025 TechZone - Tous droits réservés
-  </footer>
+    <header>
+        <h1>TechZone</h1>
+        <nav>
+            <a href="#about">À propos</a>
+            <a href="#news">Actualités</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>À propos de TechZone</h2>
+            <p>
+                Bienvenue sur <b>TechZone</b> !<br>
+                Votre source n°1 pour l'actualité technologique, les tutoriels, les analyses et les tendances du numérique.<br>
+                Nous partageons chaque semaine des articles, des guides pratiques et des conseils pour rester à la pointe de l'innovation.
+            </p>
+        </section>
+        <section id="news">
+            <h2>Actualités & Articles récents</h2>
+            <div class="news-list">
+                <div class="news-card">
+                    <h3>L’IA Générative révolutionne la productivité en entreprise</h3>
+                    <p>
+                        Les nouveaux outils d'intelligence artificielle, comme les assistants génératifs, transforment le travail collaboratif et l’automatisation des tâches dans de nombreux secteurs. De Google à Microsoft, toutes les grandes entreprises investissent massivement pour intégrer l’IA au quotidien.
+                    </p>
+                </div>
+                <div class="news-card">
+                    <h3>Le smartphone pliable devient incontournable</h3>
+                    <p>
+                        2025 marque le boom des smartphones pliables. Plus robustes, plus abordables et offrant de nouveaux usages, ils séduisent un public de plus en plus large. Découvrez notre sélection des modèles à suivre cette année.
+                    </p>
+                </div>
+                <div class="news-card">
+                    <h3>Objets connectés : la maison intelligente s'impose</h3>
+                    <p>
+                        Thermostats, ampoules, caméras : la domotique devient plus accessible et intuitive grâce aux nouveaux standards de compatibilité. La sécurité et l’économie d’énergie sont au cœur des préoccupations des fabricants.
+                    </p>
+                </div>
+                <div class="news-card">
+                    <h3>Cybersécurité : vigilance accrue face aux ransomwares</h3>
+                    <p>
+                        Les attaques par ransomware explosent en 2025. Entre entreprises et particuliers, la sensibilisation à la sécurité numérique et l’utilisation de solutions de sauvegarde deviennent essentielles.
+                    </p>
+                </div>
+                <div class="news-card">
+                    <h3>Le Web3 et la Blockchain : vers de nouveaux usages</h3>
+                    <p>
+                        NFT, cryptomonnaies, contrats intelligents : le Web3 continue sa progression et propose des solutions inédites pour la traçabilité, la finance décentralisée et la propriété numérique.
+                    </p>
+                </div>
+                <div class="news-card">
+                    <h3>Zoom sur la réalité augmentée : immersion et créativité</h3>
+                    <p>
+                        Jeux vidéo, formation, tourisme : la réalité augmentée enrichit l’expérience utilisateur et ouvre la voie à de nouvelles applications interactives. Les lunettes connectées se démocratisent.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="ads">
+            <!-- Bannière publicitaire BestChange -->
+            <div style="width: 468px; height: 60px; padding: 0; text-align: center; color: #ffffff; background: url('https://www.bestchange.com/images/banners/banner-bg.png') no-repeat; font: 12px Tahoma, Verdana, sans-serif; overflow: hidden">
+                <div style="margin: 1px 0 1px 0; padding: 0; font: 15px Tahoma, Verdana, sans-serif; text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5)">
+                    Get the best exchange rate
+                </div>
+                <div style="margin: 0; padding: 0"><script type="text/javascript" src="https://www.bestchange.com/js/banner.php?p=385221"></script></div>
+                <div style="margin: -1px 0 0 0; padding: 0; text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2)">
+                    <a target="_blank" href="https://www.bestchange.com/?p=385221" style="font: 11px Tahoma, Verdana, sans-serif; color: #f5f5f5" title="BestChange &ndash; a high quality exchanger monitoring service">Vetted exchanger monitoring service</a>
+                    &nbsp;
+                    <a target="_blank" href="https://www.bestchange.com/partner/?p=385221" style="font: 11px Tahoma, Verdana, sans-serif; color: #f5f5f5" title="Profitable referral program for e-money-related site owners">Referral program for webmasters</a>
+                </div>
+            </div>
+            <!-- Lien de parrainage attractif -->
+            <div class="parrainage-link">
+                🔥 Découvrez et profitez des meilleurs taux d’échange sur&nbsp;
+                <a target="_blank" href="https://www.bestchange.com/" onclick="this.href='https://www.bestchange.com/?p=385221'">www.bestchange.com</a> !
+            </div>
+            <!-- Lien currency exchange attractif -->
+            <div class="exchange-link">
+                💱 Changez vos devises rapidement sur&nbsp;
+                <a target="_blank" href="https://receive-money.biz//en/" onclick="this.href='https://receive-money.biz//en/?rid=118212'">Currency exchange</a> !
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <form>
+                <input type="text" placeholder="Votre nom" required>
+                <input type="email" placeholder="Votre email" required>
+                <textarea placeholder="Votre message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        © 2025 TechZone — Tous droits réservés
+    </footer>
 </body>
 </html>
